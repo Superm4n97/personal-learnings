@@ -1,0 +1,105 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Machine
+metadata:
+  annotations:
+    controlplane.cluster.x-k8s.io/kubeadm-cluster-configuration: '{"etcd":{"local":{}},"networking":{},"apiServer":{"extraArgs":{"admission-control-config-file":"/etc/kubernetes/kube-apiserver-admission-pss.yaml"},"extraVolumes":[{"name":"admission-pss","hostPath":"/etc/kubernetes/kube-apiserver-admission-pss.yaml","mountPath":"/etc/kubernetes/kube-apiserver-admission-pss.yaml","readOnly":true,"pathType":"File"}],"certSANs":["localhost","127.0.0.1","0.0.0.0","host.docker.internal"]},"controllerManager":{"extraArgs":{"enable-hostpath-provisioner":"true"}},"scheduler":{},"dns":{}}'
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"cluster.x-k8s.io/v1beta1","kind":"Machine","metadata":{"annotations":{"controlplane.cluster.x-k8s.io/kubeadm-cluster-configuration":"{\"etcd\":{\"local\":{}},\"networking\":{},\"apiServer\":{\"extraArgs\":{\"admission-control-config-file\":\"/etc/kubernetes/kube-apiserver-admission-pss.yaml\"},\"extraVolumes\":[{\"name\":\"admission-pss\",\"hostPath\":\"/etc/kubernetes/kube-apiserver-admission-pss.yaml\",\"mountPath\":\"/etc/kubernetes/kube-apiserver-admission-pss.yaml\",\"readOnly\":true,\"pathType\":\"File\"}],\"certSANs\":[\"localhost\",\"127.0.0.1\",\"0.0.0.0\",\"host.docker.internal\"]},\"controllerManager\":{\"extraArgs\":{\"enable-hostpath-provisioner\":\"true\"}},\"scheduler\":{},\"dns\":{}}"},"creationTimestamp":"2022-11-10T09:36:40Z","finalizers":["machine.cluster.x-k8s.io"],"generation":3,"labels":{"cluster.x-k8s.io/cluster-name":"capi-quickstart","cluster.x-k8s.io/control-plane":"","topology.cluster.x-k8s.io/owned":""},"name":"capi-quickstart-2h8w4-jqbv2","namespace":"default","ownerReferences":[{"apiVersion":"controlplane.cluster.x-k8s.io/v1beta1","blockOwnerDeletion":true,"controller":true,"kind":"KubeadmControlPlane","name":"capi-quickstart-2h8w4","uid":"b094b330-87fc-40ca-b3c4-0d762063e94b"}],"resourceVersion":"1729","uid":"c49c4f14-2f63-472d-94f3-4da47542480a"},"spec":{"bootstrap":{"configRef":{"apiVersion":"bootstrap.cluster.x-k8s.io/v1beta1","kind":"KubeadmConfig","name":"capi-quickstart-2h8w4-7zmbh","namespace":"default","uid":"259cc583-26f8-47e3-88f9-c0c0332e6680"},"dataSecretName":"capi-quickstart-2h8w4-7zmbh"},"clusterName":"capi-quickstart","infrastructureRef":{"apiVersion":"infrastructure.cluster.x-k8s.io/v1beta1","kind":"DockerMachine","name":"capi-quickstart-control-plane-hsnv6-cf76h","namespace":"default","uid":"122998bd-457d-4a98-88db-c58c5565dec0"},"nodeDeletionTimeout":"10s","providerID":"docker:////capi-quickstart-2h8w4-jqbv2","version":"v1.25.0"},"status":{"addresses":[{"address":"capi-quickstart-2h8w4-jqbv2","type":"Hostname"},{"address":"172.18.0.4","type":"InternalIP"},{"address":"172.18.0.4","type":"ExternalIP"}],"bootstrapReady":true,"conditions":[{"lastTransitionTime":"2022-11-10T09:37:13Z","status":"True","type":"Ready"},{"lastTransitionTime":"2022-11-10T09:37:30Z","status":"True","type":"APIServerPodHealthy"},{"lastTransitionTime":"2022-11-10T09:36:40Z","status":"True","type":"BootstrapReady"},{"lastTransitionTime":"2022-11-10T09:37:30Z","status":"True","type":"ControllerManagerPodHealthy"},{"lastTransitionTime":"2022-11-10T09:37:15Z","status":"True","type":"EtcdMemberHealthy"},{"lastTransitionTime":"2022-11-10T09:37:30Z","status":"True","type":"EtcdPodHealthy"},{"lastTransitionTime":"2022-11-10T09:37:13Z","status":"True","type":"InfrastructureReady"},{"lastTransitionTime":"2022-11-10T09:37:13Z","message":"Node condition Ready is False. ","reason":"NodeConditionsFailed","severity":"Warning","status":"False","type":"NodeHealthy"},{"lastTransitionTime":"2022-11-10T09:37:30Z","status":"True","type":"SchedulerPodHealthy"}],"infrastructureReady":true,"lastUpdated":"2022-11-10T09:37:13Z","nodeInfo":{"architecture":"amd64","bootID":"17df6f94-a2bd-4c6f-a015-61bdc9442977","containerRuntimeVersion":"containerd://1.6.4","kernelVersion":"5.15.0-52-generic","kubeProxyVersion":"v1.24.0","kubeletVersion":"v1.24.0","machineID":"4e9494799ece4af2a31082795e88de1a","operatingSystem":"linux","osImage":"Ubuntu 21.10","systemUUID":"db0f2985-7fbb-4679-8973-a053447a2d0d"},"nodeRef":{"apiVersion":"v1","kind":"Node","name":"capi-quickstart-2h8w4-jqbv2","uid":"f25e71a1-8724-42c0-a681-b4eab0ea8a0e"},"observedGeneration":3,"phase":"Running"}}
+  creationTimestamp: "2022-11-10T09:36:40Z"
+  finalizers:
+  - machine.cluster.x-k8s.io
+  generation: 4
+  labels:
+    cluster.x-k8s.io/cluster-name: capi-quickstart
+    cluster.x-k8s.io/control-plane: ""
+    topology.cluster.x-k8s.io/owned: ""
+  name: capi-quickstart-2h8w4-jqbv2
+  namespace: default
+  ownerReferences:
+  - apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: KubeadmControlPlane
+    name: capi-quickstart-2h8w4
+    uid: b094b330-87fc-40ca-b3c4-0d762063e94b
+  resourceVersion: "62585"
+  uid: c49c4f14-2f63-472d-94f3-4da47542480a
+spec:
+  bootstrap:
+    configRef:
+      apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+      kind: KubeadmConfig
+      name: capi-quickstart-2h8w4-7zmbh
+      namespace: default
+      uid: 259cc583-26f8-47e3-88f9-c0c0332e6680
+    dataSecretName: capi-quickstart-2h8w4-7zmbh
+  clusterName: capi-quickstart
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: DockerMachine
+    name: capi-quickstart-control-plane-hsnv6-cf76h
+    namespace: default
+    uid: 122998bd-457d-4a98-88db-c58c5565dec0
+  nodeDeletionTimeout: 10s
+  providerID: docker:////capi-quickstart-2h8w4-jqbv2
+  version: v1.24.0
+status:
+  addresses:
+  - address: capi-quickstart-2h8w4-jqbv2
+    type: Hostname
+  - address: 172.18.0.4
+    type: InternalIP
+  - address: 172.18.0.4
+    type: ExternalIP
+  bootstrapReady: true
+  conditions:
+  - lastTransitionTime: "2022-11-10T09:37:13Z"
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2022-11-10T09:37:30Z"
+    status: "True"
+    type: APIServerPodHealthy
+  - lastTransitionTime: "2022-11-10T09:36:40Z"
+    status: "True"
+    type: BootstrapReady
+  - lastTransitionTime: "2022-11-10T09:37:30Z"
+    status: "True"
+    type: ControllerManagerPodHealthy
+  - lastTransitionTime: "2022-11-10T09:37:15Z"
+    status: "True"
+    type: EtcdMemberHealthy
+  - lastTransitionTime: "2022-11-10T09:37:30Z"
+    status: "True"
+    type: EtcdPodHealthy
+  - lastTransitionTime: "2022-11-10T09:37:13Z"
+    status: "True"
+    type: InfrastructureReady
+  - lastTransitionTime: "2022-11-10T09:37:13Z"
+    message: 'Node condition Ready is False. '
+    reason: NodeConditionsFailed
+    severity: Warning
+    status: "False"
+    type: NodeHealthy
+  - lastTransitionTime: "2022-11-10T09:37:30Z"
+    status: "True"
+    type: SchedulerPodHealthy
+  infrastructureReady: true
+  lastUpdated: "2022-11-10T09:37:13Z"
+  nodeInfo:
+    architecture: amd64
+    bootID: 17df6f94-a2bd-4c6f-a015-61bdc9442977
+    containerRuntimeVersion: containerd://1.6.4
+    kernelVersion: 5.15.0-52-generic
+    kubeProxyVersion: v1.24.0
+    kubeletVersion: v1.24.0
+    machineID: 4e9494799ece4af2a31082795e88de1a
+    operatingSystem: linux
+    osImage: Ubuntu 21.10
+    systemUUID: db0f2985-7fbb-4679-8973-a053447a2d0d
+  nodeRef:
+    apiVersion: v1
+    kind: Node
+    name: capi-quickstart-2h8w4-jqbv2
+    uid: f25e71a1-8724-42c0-a681-b4eab0ea8a0e
+  observedGeneration: 3
+  phase: Running

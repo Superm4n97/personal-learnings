@@ -1,0 +1,72 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachineDeployment
+metadata:
+  annotations:
+    machinedeployment.clusters.x-k8s.io/revision: "1"
+  creationTimestamp: "2022-11-16T05:39:53Z"
+  generation: 1
+  labels:
+    cluster.x-k8s.io/cluster-name: capi-quickstart
+    topology.cluster.x-k8s.io/deployment-name: md-0
+    topology.cluster.x-k8s.io/owned: ""
+  name: capi-quickstart-md-0-ptbrc
+  namespace: default
+  ownerReferences:
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    kind: Cluster
+    name: capi-quickstart
+    uid: f5059bc7-d728-4294-8f5d-2863a79735b4
+  resourceVersion: "2653"
+  uid: 00de7c85-bf98-4bb0-a15b-7e9575caf516
+spec:
+  clusterName: capi-quickstart
+  minReadySeconds: 0
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      cluster.x-k8s.io/cluster-name: capi-quickstart
+      topology.cluster.x-k8s.io/deployment-name: md-0
+      topology.cluster.x-k8s.io/owned: ""
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        cluster.x-k8s.io/cluster-name: capi-quickstart
+        topology.cluster.x-k8s.io/deployment-name: md-0
+        topology.cluster.x-k8s.io/owned: ""
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+          kind: KubeadmConfigTemplate
+          name: capi-quickstart-md-0-bootstrap-dxbhf
+          namespace: default
+      clusterName: capi-quickstart
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: DockerMachineTemplate
+        name: capi-quickstart-md-0-infra-trsbp
+        namespace: default
+      version: v1.24.0
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2022-11-16T05:43:35Z"
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2022-11-16T05:43:35Z"
+    status: "True"
+    type: Available
+  observedGeneration: 1
+  phase: Running
+  readyReplicas: 3
+  replicas: 3
+  selector: cluster.x-k8s.io/cluster-name=capi-quickstart,topology.cluster.x-k8s.io/deployment-name=md-0,topology.cluster.x-k8s.io/owned=
+  unavailableReplicas: 0
+  updatedReplicas: 3

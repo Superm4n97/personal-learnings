@@ -1,0 +1,141 @@
+apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+kind: KubeadmControlPlane
+metadata:
+  annotations:
+    cluster.x-k8s.io/cloned-from-groupkind: KubeadmControlPlaneTemplate.controlplane.cluster.x-k8s.io
+    cluster.x-k8s.io/cloned-from-name: quick-start-control-plane
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"controlplane.cluster.x-k8s.io/v1beta1","kind":"KubeadmControlPlane","metadata":{"annotations":{"cluster.x-k8s.io/cloned-from-groupkind":"KubeadmControlPlaneTemplate.controlplane.cluster.x-k8s.io","cluster.x-k8s.io/cloned-from-name":"quick-start-control-plane"},"creationTimestamp":"2022-11-16T05:39:52Z","finalizers":["kubeadm.controlplane.cluster.x-k8s.io"],"generation":4,"labels":{"cluster.x-k8s.io/cluster-name":"capi-quickstart","topology.cluster.x-k8s.io/owned":""},"name":"capi-quickstart-bs2s2","namespace":"default","ownerReferences":[{"apiVersion":"cluster.x-k8s.io/v1beta1","blockOwnerDeletion":true,"controller":true,"kind":"Cluster","name":"capi-quickstart","uid":"f5059bc7-d728-4294-8f5d-2863a79735b4"}],"resourceVersion":"7614","uid":"bc0a251f-25bd-4667-8c22-f7e4fdaff591"},"spec":{"kubeadmConfigSpec":{"clusterConfiguration":{"apiServer":{"certSANs":["localhost","127.0.0.1","0.0.0.0","host.docker.internal"],"extraArgs":{"admission-control-config-file":"/etc/kubernetes/kube-apiserver-admission-pss.yaml"},"extraVolumes":[{"hostPath":"/etc/kubernetes/kube-apiserver-admission-pss.yaml","mountPath":"/etc/kubernetes/kube-apiserver-admission-pss.yaml","name":"admission-pss","pathType":"File","readOnly":true}]},"controllerManager":{"extraArgs":{"enable-hostpath-provisioner":"true"}},"dns":{},"etcd":{"local":{}},"networking":{},"scheduler":{}},"files":[{"content":"apiVersion: apiserver.config.k8s.io/v1\nkind: AdmissionConfiguration\nplugins:\n- name: PodSecurity\n  configuration:\n    apiVersion: pod-security.admission.config.k8s.io/v1beta1\n    kind: PodSecurityConfiguration\n    defaults:\n      enforce: \"baseline\"\n      enforce-version: \"latest\"\n      audit: \"restricted\"\n      audit-version: \"latest\"\n      warn: \"restricted\"\n      warn-version: \"latest\"\n    exemptions:\n      usernames: []\n      runtimeClasses: []\n      namespaces: [kube-system]\n","path":"/etc/kubernetes/kube-apiserver-admission-pss.yaml"}],"format":"cloud-config","initConfiguration":{"localAPIEndpoint":{},"nodeRegistration":{"criSocket":"unix:///var/run/containerd/containerd.sock","kubeletExtraArgs":{"cgroup-driver":"cgroupfs","eviction-hard":"nodefs.available\u003c0%,nodefs.inodesFree\u003c0%,imagefs.available\u003c0%"}}},"joinConfiguration":{"discovery":{},"nodeRegistration":{"criSocket":"unix:///var/run/containerd/containerd.sock","kubeletExtraArgs":{"cgroup-driver":"cgroupfs","eviction-hard":"nodefs.available\u003c0%,nodefs.inodesFree\u003c0%,imagefs.available\u003c0%"}}}},"machineTemplate":{"infrastructureRef":{"apiVersion":"infrastructure.cluster.x-k8s.io/v1beta1","kind":"DockerMachineTemplate","name":"capi-quickstart-control-plane-8qwnd","namespace":"default"},"metadata":{"labels":{"cluster.x-k8s.io/cluster-name":"capi-quickstart","topology.cluster.x-k8s.io/owned":""}}},"replicas":1,"rolloutStrategy":{"rollingUpdate":{"maxSurge":1},"type":"RollingUpdate"},"version":"v1.24.0"},"status":{"conditions":[{"lastTransitionTime":"2022-11-16T06:09:10Z","status":"True","type":"Ready"},{"lastTransitionTime":"2022-11-16T05:40:16Z","status":"True","type":"Available"},{"lastTransitionTime":"2022-11-16T05:39:54Z","status":"True","type":"CertificatesAvailable"},{"lastTransitionTime":"2022-11-16T06:09:10Z","status":"True","type":"ControlPlaneComponentsHealthy"},{"lastTransitionTime":"2022-11-16T06:09:11Z","status":"True","type":"EtcdClusterHealthy"},{"lastTransitionTime":"2022-11-16T05:40:14Z","status":"True","type":"MachinesCreated"},{"lastTransitionTime":"2022-11-16T06:07:03Z","status":"True","type":"MachinesReady"},{"lastTransitionTime":"2022-11-16T06:08:30Z","status":"True","type":"MachinesSpecUpToDate"},{"lastTransitionTime":"2022-11-16T06:09:10Z","status":"True","type":"Resized"}],"initialized":true,"observedGeneration":4,"ready":true,"readyReplicas":1,"replicas":1,"selector":"cluster.x-k8s.io/cluster-name=capi-quickstart,cluster.x-k8s.io/control-plane","unavailableReplicas":0,"updatedReplicas":1,"version":"v1.23.0"}}
+  creationTimestamp: "2022-11-16T05:39:52Z"
+  finalizers:
+  - kubeadm.controlplane.cluster.x-k8s.io
+  generation: 10
+  labels:
+    cluster.x-k8s.io/cluster-name: capi-quickstart
+    topology.cluster.x-k8s.io/owned: ""
+  name: capi-quickstart-bs2s2
+  namespace: default
+  ownerReferences:
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Cluster
+    name: capi-quickstart
+    uid: f5059bc7-d728-4294-8f5d-2863a79735b4
+  resourceVersion: "16644"
+  uid: bc0a251f-25bd-4667-8c22-f7e4fdaff591
+spec:
+  kubeadmConfigSpec:
+    clusterConfiguration:
+      apiServer:
+        certSANs:
+        - localhost
+        - 127.0.0.1
+        - 0.0.0.0
+        - host.docker.internal
+        extraArgs:
+          admission-control-config-file: /etc/kubernetes/kube-apiserver-admission-pss.yaml
+        extraVolumes:
+        - hostPath: /etc/kubernetes/kube-apiserver-admission-pss.yaml
+          mountPath: /etc/kubernetes/kube-apiserver-admission-pss.yaml
+          name: admission-pss
+          pathType: File
+          readOnly: true
+      controllerManager:
+        extraArgs:
+          enable-hostpath-provisioner: "true"
+      dns: {}
+      etcd:
+        local: {}
+      networking: {}
+      scheduler: {}
+    files:
+    - content: |
+        apiVersion: apiserver.config.k8s.io/v1
+        kind: AdmissionConfiguration
+        plugins:
+        - name: PodSecurity
+          configuration:
+            apiVersion: pod-security.admission.config.k8s.io/v1beta1
+            kind: PodSecurityConfiguration
+            defaults:
+              enforce: "baseline"
+              enforce-version: "latest"
+              audit: "restricted"
+              audit-version: "latest"
+              warn: "restricted"
+              warn-version: "latest"
+            exemptions:
+              usernames: []
+              runtimeClasses: []
+              namespaces: [kube-system]
+      path: /etc/kubernetes/kube-apiserver-admission-pss.yaml
+    format: cloud-config
+    initConfiguration:
+      localAPIEndpoint: {}
+      nodeRegistration:
+        criSocket: unix:///var/run/containerd/containerd.sock
+        kubeletExtraArgs:
+          cgroup-driver: cgroupfs
+          eviction-hard: nodefs.available<0%,nodefs.inodesFree<0%,imagefs.available<0%
+    joinConfiguration:
+      discovery: {}
+      nodeRegistration:
+        criSocket: unix:///var/run/containerd/containerd.sock
+        kubeletExtraArgs:
+          cgroup-driver: cgroupfs
+          eviction-hard: nodefs.available<0%,nodefs.inodesFree<0%,imagefs.available<0%
+  machineTemplate:
+    infrastructureRef:
+      apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+      kind: DockerMachineTemplate
+      name: capi-quickstart-control-plane-nvcpj
+      namespace: default
+    metadata:
+      labels:
+        cluster.x-k8s.io/cluster-name: capi-quickstart
+        topology.cluster.x-k8s.io/owned: ""
+  replicas: 1
+  rolloutStrategy:
+    rollingUpdate:
+      maxSurge: 1
+    type: RollingUpdate
+  version: v1.24.0
+status:
+  conditions:
+  - lastTransitionTime: "2022-11-16T06:53:37Z"
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2022-11-16T05:40:16Z"
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-11-16T05:39:54Z"
+    status: "True"
+    type: CertificatesAvailable
+  - lastTransitionTime: "2022-11-16T06:53:37Z"
+    status: "True"
+    type: ControlPlaneComponentsHealthy
+  - lastTransitionTime: "2022-11-16T06:53:37Z"
+    status: "True"
+    type: EtcdClusterHealthy
+  - lastTransitionTime: "2022-11-16T05:40:14Z"
+    status: "True"
+    type: MachinesCreated
+  - lastTransitionTime: "2022-11-16T06:51:36Z"
+    status: "True"
+    type: MachinesReady
+  - lastTransitionTime: "2022-11-16T06:53:01Z"
+    status: "True"
+    type: MachinesSpecUpToDate
+  - lastTransitionTime: "2022-11-16T06:53:37Z"
+    status: "True"
+    type: Resized
+  initialized: true
+  observedGeneration: 10
+  ready: true
+  readyReplicas: 1
+  replicas: 1
+  selector: cluster.x-k8s.io/cluster-name=capi-quickstart,cluster.x-k8s.io/control-plane
+  unavailableReplicas: 0
+  updatedReplicas: 1
+  version: v1.23.0
