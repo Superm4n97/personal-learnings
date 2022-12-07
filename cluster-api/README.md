@@ -1,4 +1,4 @@
-### Learn the concepts about cluster api:
+## Learn the concepts about cluster api:
 * https://www.youtube.com/watch?v=9H8flXm_lKk
 * https://cluster-api.sigs.k8s.io/user/concepts.html
 * https://cluster-api.sigs.k8s.io/user/quick-start.html
@@ -9,14 +9,14 @@ management cluster, workload cluster, <br>
 machine, machineset, machinedeployment, kubeadmcontrolplane, clusterclass, cni, kubeconfig, nodes, <br>
 control plane machine, workload machine, <br>
 
-### Kubernetes Cluster API Provider AWS (CAPA)
-Two ways to achieve the kubernetes cluster using CAPA. One way by creating virtual machines for master and worker nodes and manually initializing them as cloud machine (cloud init).
-Other way is by using AWS EKS support.
+## 1. Kubernetes Cluster API Provider AWS (CAPA)
+AWS cluster can be various types
+* Create machines/instances of basic instance type then make control pane (with kubeadmcontrolplane) and worker nodes of your own.
+* Create EKS based control plane and add worker nodes as needed. In this process you don't need to concern about the control plane it will automatically scale up and down of its own.
+* Create EKS based control plane and machine pool, and you don't need to managed something of your own, AWS takes care of everything.
 
-#### Currently, EKS based Cluster supports:
-* Provisioning and managing an Amazon EKS Cluster.
-* Upgrading the Kubernetes version of the EKS Cluster.
-* Attaching a single or a machine pool to the EKS Cluster.
-* Managing "EKS Addons" and aws-iam-authenticator configuration
-* Creating an EKS fargate profile
+### 1.1 Pivoting
+Pivoting basically used for changing the management cluster. So for pivoting we have to move the provider component from source cluster to target cluster https://cluster-api.sigs.k8s.io/clusterctl/commands/move.html <br>
 
+use `cluster init` to install provider component <br>
+`cluster move --to-kubeconfig=eks.kubeconfig`
