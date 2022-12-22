@@ -3,6 +3,7 @@
 * https://cluster-api.sigs.k8s.io/user/concepts.html
 * https://cluster-api.sigs.k8s.io/user/quick-start.html
 * For AWS provider: https://cluster-api-aws.sigs.k8s.io
+* For Azure provider: https://github.com/kubernetes-sigs/cluster-api-provider-azure
 
 ### Keywords:
 management cluster, workload cluster, <br>
