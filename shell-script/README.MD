@@ -13,10 +13,11 @@ script_name=${0##*/}
 ```
 script_name stores the name of the script
 
-### Nodes
+### Notes
 * bash script support 3 wildcards:(https://www.howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash/)
   * `?`represent exactly one character after
   * `*` represent any sequence of character including no character
   * `[]` square bracket, the relevant character of the file name must match at least one of the character of the square box.
 * a `local` variable can only be accessed with the function, and it's child functions.
 * `$(uname -m)` gives the architecture of the system. (example in local_variable.sh file)
+* **Environment vs regular shell variables**: Shell variables is local to a particular shell instance, and environment variables are inherited through the all the scripts.
