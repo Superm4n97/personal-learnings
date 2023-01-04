@@ -1,4 +1,5 @@
 ### Resource:
+* Publisher Subscriber Model: https://www.youtube.com/watch?v=FMhbR_kQeHw
 * Appscode public doc: https://docs.google.com/presentation/d/1kRuA_DD3B9-swdIXlEBz4kLfZ0dO11gh3zlfvJNSmns/edit#slide=id.p
 * Official website: https://nats.io/
 * CLI installation: https://github.com/nats-io/natscli
@@ -17,3 +18,7 @@
 ### Jetstream (nats streaming)
 * Streams are "message stores" (memory or file)
 * Subscribers are called consumers and consume message from streams.
+
+### NATS Go
+* inport nats client: `github.com/nats-io/nats.go`
+* 
