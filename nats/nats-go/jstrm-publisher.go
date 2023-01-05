@@ -19,6 +19,16 @@ func main() {
 		return
 	}
 
+	_, err = js.AddStream(&nats.StreamConfig{
+		Name:        "LOGS",
+		Description: "watch for logs",
+		Subjects:    []string{"LOGS.*"},
+	})
+	if err != nil {
+		klog.Errorf(err.Error())
+		return
+	}
+
 	for {
 		var msg string
 		fmt.Scanln(&msg)
