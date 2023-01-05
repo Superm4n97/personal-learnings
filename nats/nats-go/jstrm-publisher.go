@@ -31,7 +31,7 @@ func main() {
 
 	for {
 		var msg string
-		fmt.Scanln(&msg)
+		fmt.Scan(&msg)
 
 		if msg == "exit" {
 			break
