@@ -21,4 +21,8 @@
 
 ### NATS Go
 * inport nats client: `github.com/nats-io/nats.go`
-* 
+
+### Types of nats connection
+* Plain un-encrypted TCP connection. (NATS server URL starts with nats://...)
+* TLS encrypted TCP connection. (NATS server URL starts with tls://...)
+* Websocket connection. (NATS server URL starts with ws://...)
